@@ -1,18 +1,20 @@
 package io.qaguru.owner.config;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.function.Supplier;
 
-public class WebDriverProvider implements Supplier<WebDriver> {
+public class WebDriverProvider implements Supplier<WebDriver>{
 
-    private WebDriverConfig config;
+    private WebdriverConfig config;
 
-    public WebDriverProvider () {
-        this.config = new WebDriverConfig();
+    public  WebDriverProvider()  {
+
+        this.config = ConfigFactory.create(WebdriverConfig.class,System.getProperties());
     }
     @Override
     public WebDriver get() {
